@@ -1,6 +1,6 @@
 import {materials} from "../assets/materialsData.js";
 import {stones} from "../assets/stonesData.js";
-import {diamondPave} from "../assets/DiamondPave.js";
+import {diamondPave} from "../assets/diamondPave.js";
 
 const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelected, withDiamond, setWithDiamond}) => {
     return (
