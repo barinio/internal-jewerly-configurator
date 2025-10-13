@@ -1,0 +1,256 @@
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+header{
+    display: flex;
+
+    padding: 24px ;
+    position: relative;
+
+    align-items: center
+
+}
+header:before{
+    content: "";
+    position: absolute;
+    background:rgba(30, 30, 30, 0.1);
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+}
+
+.headerText{
+    margin-left: 24px;
+    font-weight: 500;
+    font-size: 24px;
+
+    line-height: 28.8px;
+}
+
+.main{
+    display: flex;
+
+    gap: 64px;
+}
+
+.section{
+    padding-top: 60px;
+}
+
+
+.viewerSection{
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 840px;
+    align-items: center
+}
+
+.wrapperPrice{
+    padding: 15px 60px;
+    display: flex;
+    gap:8px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    width: 246px;
+
+}
+
+.textPrice{
+    font-weight: 400;
+    font-size: 24px;
+
+    line-height: 28.8px;
+}
+
+.priceValue{
+    font-weight: 600;
+}
+
+.webgl{
+    padding: 0 7px;
+
+    width: 826px;
+    height: 826px;
+
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+
+.productInfo{
+    width: 468px;
+}
+
+.productName{
+    font-family: "Aboreto", serif;
+    font-weight: 400;
+
+    font-size: 48px;
+    line-height: 57.6px;
+    margin-bottom: 16px;
+}
+.description{
+    font-size: 16px;
+}
+
+.productMaterial{
+    margin-top: 80px;
+    text-transform: uppercase;
+}
+
+.productMaterial h2{
+
+}
+
+.colorMaterial{
+font-weight: 600;
+}
+
+.materialSelectionBlock{
+    display: flex;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.matLabelWrapper{
+    width: 96px;
+    height: 96px;
+    padding: 8px;
+    position: relative;
+
+}
+.matSelected:before {
+    position: absolute;
+    content: "";
+    width: 96px;
+    height: 96px;
+    top: -2px;
+    left: -2px;
+
+
+    border: 2px solid rgba(206, 201, 186, 1);
+    border-radius: 50%;
+}
+
+.materialCircle{
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+
+}
+
+.selectContainer {
+    margin-top:40px;
+
+}
+
+.selectContainer h2{
+    text-transform: uppercase;
+    margin-bottom: 16px;
+}
+
+.selectionBlock{
+    display: flex;
+    background: rgba(245, 243, 237, 1);
+
+    padding: 4px;
+    gap:4px;
+
+    border-radius: 12px;
+
+}
+
+.stoneLabelWrapper, .labelWrapper{
+    height: 44px;
+    flex-basis: calc((100% - 4px) / 3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stoneSelected, .selected{
+    background-color: rgba(255, 255, 255, 1);
+    border-radius: 8px;
+    position: relative;
+    filter: drop-shadow(0px 1px 1px rgba(0, 0, 0, 0.05));
+
+}
+
+.stoneSelected:before, .selected:before {
+    position: absolute;
+    content: "";
+    height: 44px;
+    width: 100%;
+
+    border: 1px solid rgba(30, 30, 30, 0.1);
+    border-radius: 8px;
+}
+
+.stoneSelected .stoneName, .selected .withDiamondText{
+    opacity: 1;
+}
+
+.stoneName, .withDiamondText{
+    font-size: 16px;
+    font-weight: 500;
+    opacity: 0.7;
+}
+
+.labelWrapper{
+    flex-basis: calc((100% - 4px) / 2);
+}
+
+
+.addButton{
+    margin-top: 80px;
+    width: 252px;
+    height: 52px;
+    background: rgba(39, 39, 39, 1);
+    background: linear-gradient(180deg,rgba(39, 39, 39, 1) 0%, rgba(0, 0, 0, 1) 50%, rgba(39, 39, 39, 1) 100%);
+    box-shadow:
+            0 1px 1px rgba(31, 31, 31, 0.09),
+            0 1px 1px rgba(31, 31, 31, 0.05),
+            0 2px 1px rgba(31, 31, 31, 0.01),
+            0 3px 1px rgba(31, 31, 31, 0),
+            inset 0 0 0 2px rgba(255, 255, 255, 0.15);
+
+    border-radius: 8px;
+    z-index: 0;
+    /*border: 1px solid rgba(31, 31, 31, 0.09);*/
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 16px;
+    font-weight: 500;
+    color:rgba(255, 255, 255, 1)
+
+
+}
+.addButton::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(180deg, rgba(21, 21, 21, 1) 0%, rgba(32, 32, 32, 1) 100%);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;}

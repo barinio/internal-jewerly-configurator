@@ -1,0 +1,111 @@
+:root {
+  --dark-matter: rgba(30, 30, 30, 1);
+  --border-color: rgba(30, 30, 30, 0.1);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  font-weight: 400;
+  font-size: 14px;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  color: currentColor;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  /* max-width: 100%; */
+  /* height: auto; */
+}
+
+input,
+textarea,
+button,
+label {
+  display: block;
+  padding: 0;
+  margin: 0;
+  font-weight: inherit;
+  letter-spacing: 0.04em;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/*color: var(--prim-color);*/
+
+@font-face {
+  font-family: "Aboreto";
+  src:
+          url("./assets/fonts/Aboreto-Regular.ttf") format("truetype");
+
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src:
+          url("./assets/fonts/SFProText-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src:
+          url("./assets/fonts/SFProText-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "SF Pro";
+  src:
+          url("./assets/fonts/SFProText-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+  font-style: normal;
+}
+
+body{
+  font-family: "SF Pro", sans-serif;
+
+  max-width: 1440px;
+  height: 100vh;
+
+  color: var(--dark-matter);
+
+
+}
