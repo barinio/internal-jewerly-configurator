@@ -18,12 +18,15 @@ function App() {
     return (
         <>
             <header>
-                <a className="back-link">
+                <div className="headerContainer">
+                <a className="backLink">
                     <img src={leftArrow} alt="img" height={24}/>
                 </a>
                 <p className='headerText'>ARbling 3D Viewer</p>
-            </header>
+                </div>
+                </header>
             <main className="main">
+                <div className="mainContainer">
                 <ModelSection />
 
                 <section className="section productInfo">
@@ -41,6 +44,8 @@ function App() {
                         Add to cart ($489)
                     </button>
                 </section>
+                </div>
+
             </main>
         </>
     )
