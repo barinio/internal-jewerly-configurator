@@ -1,11 +1,11 @@
 import * as THREE from "three";
-// import {FBXLoader} from "three/examples/jsm/loaders/FBXLoader.js";
+
 import hdrUrl from "../assets/images/christmas_photo_studio_03_1k.hdr"
 import {OrbitControls} from "three/examples/jsm/controls/OrbitControls.js";
 import {useEffect, useRef} from "react";
-import {DRACOLoader, GLTFLoader, RGBELoader} from "three/addons";
+import {DRACOLoader, GLTFLoader, HDRLoader} from "three/addons";
 
-const ModelSection = ({modelColor, withDiamond}) => {
+const ModelSection = ({modelColor, withDiamond, stoneSelected, price}) => {
     const canvasRef = useRef(null);
     const modelRef = useRef(null);
     const rendererRef = useRef(null);
@@ -49,7 +49,7 @@ const ModelSection = ({modelColor, withDiamond}) => {
         scene.add(directionalLight);
 
         const goldMaterial = new THREE.MeshPhysicalMaterial({
-            color: new THREE.Color(1.0, 0.766, 0.336),
+            color: new THREE.Color("white"),
             metalness: 1.0,
             roughness: 0.1,
             envMapIntensity: 2.0,
@@ -86,7 +86,7 @@ const ModelSection = ({modelColor, withDiamond}) => {
             side: THREE.DoubleSide
         });
 
-        const rgbeLoader = new RGBELoader()
+        const rgbeLoader = new HDRLoader()
         rgbeLoader.load(hdrUrl, (texture) => {
             texture.mapping = THREE.EquirectangularReflectionMapping
             scene.environment = texture
@@ -99,7 +99,7 @@ const ModelSection = ({modelColor, withDiamond}) => {
         loader.setDRACOLoader(dracoLoader)
 
         loader.load(
-            "./models/ring_ver3.glb",
+            "./models/ring_ver3_3gem.glb",
             (gltf) => {
                 const object = gltf.scene;
                 object.scale.set(13,13,13);
@@ -107,6 +107,7 @@ const ModelSection = ({modelColor, withDiamond}) => {
                 object.position.y = 20;
 
                 object.traverse((child) => {
+
                     if (child.isMesh) {
                         child.castShadow = true;
                         child.receiveShadow = true;
@@ -126,7 +127,8 @@ const ModelSection = ({modelColor, withDiamond}) => {
             },
             undefined,
             (error) => console.error("Error loading GLB model:", error)
-        );
+        )
+
 
         const controls = new OrbitControls(camera, canvas);
         controls.enableDamping = true;
@@ -190,18 +192,36 @@ const ModelSection = ({modelColor, withDiamond}) => {
 
         const show = withDiamond === "With Diamond Pavé";
         modelRef.current.traverse((child) => {
-            console.log(child);
             if (child.isMesh && child.name.toLowerCase().includes("gem_buttom")) {
                 child.visible = show;
             }
         });
     }, [withDiamond]);
 
+    useEffect(() => {
+        if (!modelRef.current || !stoneSelected) return;
+
+        const stoneMap = {
+            "Oval": "gem_top_oval",
+            "Cushion": "gem_top_square",
+            "Round": "gem_top_round"
+        };
+
+        const activeStone = stoneMap[stoneSelected];
+
+        modelRef.current.traverse((child) => {
+            if (child.isMesh && child.name.toLowerCase().startsWith("gem_top_")) {
+
+                child.visible = child.name.toLowerCase() === activeStone;
+            }
+        });
+    }, [stoneSelected]);
+
     return (
         <section className="section viewerSection">
             <div className="wrapperPrice">
                 <p className="textPrice">Price:</p>
-                <p className="textPrice priceValue">$489</p>
+                <p className="textPrice priceValue">${price}</p>
             </div>
             <canvas ref={canvasRef} className="webgl"></canvas>
         </section>
