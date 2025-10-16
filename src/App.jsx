@@ -7,12 +7,12 @@ import ProductInfo from "./components/ProductInfo.jsx";
 import shop from "./assets/images/shopping-cart-simple.svg";
 import leftArrow from "./assets/images/move-left.svg";
 
-// import style from './App.css';
-
 function App() {
     const [matSelected, setMatSelected] = useState("WHITE GOLD");
     const [stoneSelected, setStoneSelected] = useState("Oval");
     const [withDiamond, setWithDiamond] = useState("With Diamond Pavé");
+
+    const [modelColor, setModelColor] = useState("white");
 
 
     return (
@@ -27,7 +27,7 @@ function App() {
                 </header>
             <main className="main">
                 <div className="mainContainer">
-                <ModelSection />
+                <ModelSection modelColor={modelColor} withDiamond={withDiamond} />
 
                 <section className="section productInfo">
                     <ProductInfo matSelected={matSelected}
@@ -36,6 +36,7 @@ function App() {
                                  setStoneSelected={setStoneSelected}
                                  withDiamond={withDiamond}
                                  setWithDiamond={setWithDiamond}
+                                 setModelColor={setModelColor}
                     />
 
                     <button type="button" className="addButton"

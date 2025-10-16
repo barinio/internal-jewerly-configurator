@@ -21,7 +21,7 @@ header{
     display: flex;
     align-items: center;
 
-    width: 1440px;
+    max-width: 1440px;
     margin: auto;
 
 }
@@ -36,7 +36,12 @@ header:before{
     width: 100%;
 }
 
+.backLink{
+    cursor: pointer;
+}
+
 .headerText{
+    width: 100%;
     margin-left: 24px;
     font-weight: 500;
     font-size: 24px;
@@ -44,14 +49,11 @@ header:before{
     line-height: 28.8px;
 }
 
-.main{
-
-}
 .mainContainer{
     display: flex;
-    gap: 64px;
+    gap: 14px;
 
-    width: 1440px;
+    max-width: 1440px;
     margin: auto;
 }
 
@@ -65,7 +67,7 @@ header:before{
     flex-direction: column;
 
     width: 100%;
-    max-width: 840px;
+    max-width: 640px;
     align-items: center
 }
 
@@ -94,15 +96,17 @@ header:before{
 .webgl{
     padding: 0 7px;
 
-    width: 826px;
-    height: 826px;
-
     border: 1px solid var(--border-color);
     border-radius: 8px;
+
+    cursor: pointer;
 }
 
 .productInfo{
+
     width: 468px;
+
+    margin-right: 24px;
 }
 
 .productName{
@@ -141,7 +145,6 @@ font-weight: 600;
     height: 96px;
     padding: 8px;
     position: relative;
-
 }
 .matSelected:before {
     position: absolute;
@@ -160,7 +163,7 @@ font-weight: 600;
     border-radius: 50%;
     width: 80px;
     height: 80px;
-
+    cursor: pointer;
 }
 
 .selectContainer {
@@ -218,6 +221,9 @@ font-weight: 600;
     font-size: 16px;
     font-weight: 500;
     opacity: 0.7;
+    cursor: pointer;
+
+    text-align: center;
 }
 
 .labelWrapper{
@@ -265,3 +271,42 @@ font-weight: 600;
     -webkit-mask-composite: xor;
     mask-composite: exclude;
     z-index: -1;}
+
+@media (max-width: 1023px)  {
+    .mainContainer{
+    flex-direction: column-reverse;
+        max-width: 600px;
+    }
+    .productInfo{
+        width: 100%;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    .viewerSection{
+        padding-bottom: 24px;
+    }
+
+}
+
+@media (min-width: 1024px) {
+    .mainContainer{
+        gap: 32px;
+    }
+}
+
+@media (min-width: 1350px) {
+    .mainContainer{
+        gap: 64px;
+    }
+
+    .viewerSection{
+        max-width: 840px;
+
+    }
+
+    .productInfo{
+        width: 468px;
+        margin-right: 48px;
+    }
+
+}

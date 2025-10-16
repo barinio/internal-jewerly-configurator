@@ -2,7 +2,13 @@ import {materials} from "../assets/materialsData.js";
 import {stones} from "../assets/stonesData.js";
 import {diamondPave} from "../assets/diamondPave.js";
 
-const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelected, withDiamond, setWithDiamond}) => {
+const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelected, withDiamond, setWithDiamond, setModelColor}) => {
+
+    function selectMaterial(name, color) {
+        setMatSelected(name)
+        setModelColor(color)
+    }
+
     return (
         <>
             <div>
@@ -29,7 +35,7 @@ const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelect
                                 className="inputMaterial visually-hidden"
                                 value={mat.name}
                                 checked={matSelected === mat.name}
-                                onChange={() => setMatSelected(mat.name)}
+                                onChange={() => selectMaterial(mat.name,mat.id )}
                             />
 
                             <label htmlFor={mat.id}
@@ -63,7 +69,7 @@ const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelect
                                 onChange={() => setStoneSelected(name)}
                             />
 
-                            <label htmlFor={name}
+                            <label htmlFor={name} className="stoneLabel"
                             >
                                 <p className="stoneName">{name}</p>
                             </label>
