@@ -119,6 +119,10 @@ const ModelSection = ({modelColor, withDiamond, stoneSelected, price}) => {
                         } else if (name.includes("gem")) {
                             child.material = glassMaterial;
                         }
+
+                        if (name.startsWith("gem_top_")) {
+                            child.visible = name === "gem_top_oval";
+                        }
                     }
                 });
 

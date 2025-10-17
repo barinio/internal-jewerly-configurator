@@ -193,6 +193,8 @@ font-weight: 600;
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+
 }
 
 .stoneSelected, .selected{
@@ -221,7 +223,6 @@ font-weight: 600;
     font-size: 16px;
     font-weight: 500;
     opacity: 0.7;
-    cursor: pointer;
 
     text-align: center;
 }

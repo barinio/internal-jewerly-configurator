@@ -55,8 +55,9 @@ const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelect
 
                 <div className="selectionBlock">
                     {stones.map(({name}) => (
-                        <div
+                        <label
                             key={name}
+                            htmlFor={name}
                             className={`stoneLabelWrapper ${stoneSelected === name ? "stoneSelected" : ""}`}
                         >
                             <input
@@ -68,12 +69,8 @@ const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelect
                                 checked={stoneSelected === name}
                                 onChange={() => setStoneSelected(name)}
                             />
-
-                            <label htmlFor={name} className="stoneLabel"
-                            >
-                                <p className="stoneName">{name}</p>
-                            </label>
-                        </div>
+                            <p className="stoneName">{name}</p>
+                        </label>
                     ))}
                 </div>
             </div>
@@ -82,9 +79,10 @@ const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelect
                 <h2>Diamond Pavé</h2>
 
                 <div className="selectionBlock">
-                    {diamondPave.map(({name}) => (
-                        <div
+                    {diamondPave.map(({ name }) => (
+                        <label
                             key={name}
+                            htmlFor={name}
                             className={`labelWrapper ${withDiamond === name ? "selected" : ""}`}
                         >
                             <input
@@ -96,12 +94,8 @@ const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelect
                                 checked={withDiamond === name}
                                 onChange={() => setWithDiamond(name)}
                             />
-
-                            <label htmlFor={name}
-                            >
-                                <p className="withDiamondText">{name}</p>
-                            </label>
-                        </div>
+                            <p className="withDiamondText">{name}</p>
+                        </label>
                     ))}
                 </div>
             </div>
