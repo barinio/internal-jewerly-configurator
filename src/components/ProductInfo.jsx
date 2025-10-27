@@ -1,7 +1,7 @@
 import {materials} from "../assets/materialsData.js";
 import {stones} from "../assets/stonesData.js";
 import {diamondPave} from "../assets/diamondPave.js";
-import {environments} from "../assets/environmentsData.js";
+import environments from "../assets/environmentsData.js";
 
 const ProductInfo = ({environmentSettings, setEnvironmentSettings, matSelected, setMatSelected, stoneSelected, setStoneSelected, withDiamond, setWithDiamond, setModelColor}) => {
 

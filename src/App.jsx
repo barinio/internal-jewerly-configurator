@@ -7,6 +7,8 @@ import ProductInfo from "./components/ProductInfo.jsx";
 import shop from "./assets/images/shopping-cart-simple.svg";
 import leftArrow from "./assets/images/move-left.svg";
 
+import environments from "./assets/environmentsData.js"
+
 function App() {
     const [matSelected, setMatSelected] = useState("WHITE GOLD");
     const [stoneSelected, setStoneSelected] = useState("Oval");
@@ -15,9 +17,8 @@ function App() {
     const [modelColor, setModelColor] = useState("");
 
     const [environmentSettings, setEnvironmentSettings] = useState(
-        {"Environment 1": {materialColor: "#eeedee", materialName:"WHITE GOLD", hdrPath:"/src/assets/images/christmas_photo_studio_04_1k.hdr"}
+        {"Environment 1": {materialColor: "#eeedee", materialName:"WHITE GOLD", hdrPath: environments[0].path}
     });
-    //assets/images/studio_small_03_1k.hdr
 
     // console.log("environmentSettings", Object.keys(environmentSettings)[0])
     // console.log("environmentSettings", Object.values(environmentSettings)[0].materialName)

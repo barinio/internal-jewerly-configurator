@@ -4,7 +4,7 @@ import brown_06 from '../assets/images/brown_photostudio_06_1k.hdr' //==nice
 import studio_country_hall from '../assets/images/studio_country_hall_1k.hdr' // close (white)
 import rostock_laage_airport from '../assets/images/rostock_laage_airport_1k.hdr' // close
 
-export const environments = [
+const environments = [
     {
         name: 'Environment 1',
         path: environment
@@ -27,3 +27,5 @@ export const environments = [
         path: rostock_laage_airport
     }
 ];
+
+export default environments
