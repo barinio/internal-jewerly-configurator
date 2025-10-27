@@ -12,7 +12,14 @@ function App() {
     const [stoneSelected, setStoneSelected] = useState("Oval");
     const [withDiamond, setWithDiamond] = useState("With Diamond Pavé");
     const [price, setPrice] = useState(489);
-    const [modelColor, setModelColor] = useState("white");
+    const [modelColor, setModelColor] = useState("");
+
+    const [environmentSettings, setEnvironmentSettings] = useState(
+        {"Environment-1": {materialColor: "#eeedee", materialName:"WHITE GOLD", hdrPath:"/src/assets/images/brown_photostudio_02_1k.hdr"}
+    });
+    //assets/images/studio_small_03_1k.hdr
+
+    // console.log("environmentSettings", Object.keys(environmentSettings)[0])
 
     useEffect(() => {
         let basePrice = 489;
@@ -68,6 +75,7 @@ function App() {
                                   withDiamond={withDiamond}
                                   stoneSelected={stoneSelected}
                                   price={price}
+                                  environmentSettings={environmentSettings}
                     />
 
                     <section className="section productInfo">
@@ -78,6 +86,8 @@ function App() {
                                      withDiamond={withDiamond}
                                      setWithDiamond={setWithDiamond}
                                      setModelColor={setModelColor}
+                                     environmentSettings={environmentSettings}
+                                     setEnvironmentSettings={setEnvironmentSettings}
                         />
 
                         <button type="button" className="addButton"

@@ -55,6 +55,8 @@ header:before{
 
     max-width: 1440px;
     margin: auto;
+    justify-content: center;
+    padding: 0 24px;
 }
 
 .section{
@@ -94,12 +96,16 @@ header:before{
 }
 
 .webgl{
-    padding: 0 7px;
+    margin: 0 7px;
 
     border: 1px solid var(--border-color);
     border-radius: 8px;
 
     cursor: pointer;
+    min-height: 350px;
+}
+.webgl canvas{
+    height: 450px;
 }
 
 .productInfo{

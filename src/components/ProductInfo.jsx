@@ -1,13 +1,27 @@
 import {materials} from "../assets/materialsData.js";
 import {stones} from "../assets/stonesData.js";
 import {diamondPave} from "../assets/diamondPave.js";
+import {environments} from "../assets/environmentsData.js";
 
-const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelected, withDiamond, setWithDiamond, setModelColor}) => {
+const ProductInfo = ({environmentSettings, setEnvironmentSettings, matSelected, setMatSelected, stoneSelected, setStoneSelected, withDiamond, setWithDiamond, setModelColor}) => {
 
-    function selectMaterial(name, color) {
-        setMatSelected(name)
-        setModelColor(color)
-    }
+    const selectMaterial = (environmentName, materialName, materialColor, hdrPath) => {
+        setMatSelected(materialName)
+        setModelColor(materialColor)
+
+        setEnvironmentSettings(() => ({
+
+            [environmentName]: {
+                materialName,
+                materialColor,
+                hdrPath
+            }
+        }));
+    };
+    // function selectMaterial(name, color) {
+    //     setMatSelected(name)
+    //     setModelColor(color)
+    // }
 
     return (
         <>
@@ -22,32 +36,41 @@ const ProductInfo = ({matSelected, setMatSelected, stoneSelected, setStoneSelect
                     <span className="colorMaterial">{matSelected}</span>
                 </h2>
 
-                <div className="materialSelectionBlock">
-                    {materials.map((mat) => (
-                        <div
-                            key={mat.id}
-                            className={`matLabelWrapper ${matSelected === mat.name ? "matSelected" : ""}`}
-                        >
-                            <input
-                                type="radio"
-                                name="material"
-                                id={mat.id}
-                                className="inputMaterial visually-hidden"
-                                value={mat.name}
-                                checked={matSelected === mat.name}
-                                onChange={() => selectMaterial(mat.name,mat.id )}
-                            />
+                <ul>
+                    {environments.map(environment => (
+                        <li key={environment.name}>
+                            <p>{environment.name}</p>
+                            <ul className="materialSelectionBlock">
+                                {materials.map((mat) => (
+                                    <li
+                                        key={`${environment.name}-${mat.color}`}
+                                        className={`matLabelWrapper ${
+                                            environmentSettings[environment.name]?.materialName === mat.name ? "matSelected" : ""
+                                        }`}
+                                    >
+                                        <input
+                                            type="radio"
+                                            name={`material-${environment.name}`}
+                                            id={`${environment.name}-${mat.color}`}
+                                            className="inputMaterial visually-hidden"
+                                            value={mat.color}
+                                            checked={environmentSettings[environment.name]?.materialName === mat.name}
+                                            onChange={() => selectMaterial(environment.name, mat.name,mat.color, environment.path )}
+                                        />
 
-                            <label htmlFor={mat.id}
-                            >
-                                <div
-                                    className="materialCircle"
-                                    style={{background: mat.gradient}}
-                                ></div>
-                            </label>
-                        </div>
+                                        <label htmlFor={`${environment.name}-${mat.color}`}
+                                        >
+                                            <div
+                                                className="materialCircle"
+                                                style={{background: mat.gradient}}
+                                            ></div>
+                                        </label>
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
                     ))}
-                </div>
+                </ul>
             </div>
 
             <div className="selectContainer">
