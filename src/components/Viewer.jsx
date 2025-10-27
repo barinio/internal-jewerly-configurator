@@ -12,7 +12,7 @@ import {
   MeshRefractionMaterial,
   MeshTransmissionMaterial
 } from '@react-three/drei'
-import {folder, useControls} from 'leva'
+import {folder, Leva, useControls} from 'leva'
 
 // import hdrUrl from '../assets/images/christmas_photo_studio_03_1k.hdr'
 // import hdrUrl from '../assets/images/christmas_photo_studio_04_1k.hdr' //?nice
@@ -375,7 +375,7 @@ export default function Viewer({environmentSettings, stoneSelected, withDiamond 
       {/*    </div>*/}
       {/*  )}*/}
       {/*</div>*/}
-
+      <Leva hidden={true} />
       <Canvas shadows camera={{ position: [15, 10, 40], fov: 45 }}>
         {/*<color attach="background" args={['#f0f0f0']} />*/}
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
