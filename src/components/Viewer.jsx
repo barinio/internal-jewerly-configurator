@@ -79,7 +79,7 @@ function Ring({ modelUrl, hdrUrl, ...props }) {
   // env.mapping = THREE.EquirectangularReflectionMapping
   // Optional config
   const gemMatConf = useControls('Gem', {
-    color: 'white',
+    color:  'white',
     bounces: { value: 3, min: 0, max: 8, step: 1 },
     aberrationStrength: { value: 0.01, min: 0.0001, max: 0.5, step: 0.001 },
     ior: { value: 2.75, min: 0, max: 10 },
@@ -89,7 +89,7 @@ function Ring({ modelUrl, hdrUrl, ...props }) {
   const goldMatConf = useControls('Gold', {
     // color: props.modelColor,
     // color: '#fffff4',
-    color: '#eeedee',
+    color: props.modelColor || 'red',
     roughness: { value: 0.15, min: 0, max: 1 },
     metalness: { value: 1, min: 0, max: 1 },
     envMapIntensity: { value: 1.5, min: 0, max: 5 },
@@ -111,9 +111,9 @@ function Ring({ modelUrl, hdrUrl, ...props }) {
     setColorGold(props.modelColor);
   }, [props.modelColor]);
 
-  useEffect(() => {
-    setColorGold(goldMatConf.color);
-  }, [goldMatConf.color]);
+  // useEffect(() => {
+  //   setColorGold(goldMatConf.color);
+  // }, [goldMatConf.color]);
 
 
   const gemMat = useMemo(() => {
@@ -310,11 +310,13 @@ function RealismEffect({ children }) {
 }
 
 
-export default function Viewer({environmentSettings, modelColor, stoneSelected, withDiamond }) {
+export default function Viewer({environmentSettings, stoneSelected, withDiamond }) {
   const [modelUrl, setModelUrl] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
 
   const hdrUrl = Object.values(environmentSettings)[0]?.hdrPath
+  const modelColor = Object.values(environmentSettings)[0]?.materialColor
+
 
 
   const handleFileUpload = useCallback((event) => {
@@ -350,32 +352,32 @@ export default function Viewer({environmentSettings, modelColor, stoneSelected, 
   return (
     <div style={{ position: 'relative', width: '100%', height: '100%' }}>
       {/* UI для загрузки файла */}
-      <div style={{
-        position: 'absolute',
-        top: '10px',
-        left: '10px',
-        zIndex: 10,
-        background: 'rgba(255, 255, 255, 0.9)',
-        padding: '10px',
-        borderRadius: '5px',
-        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
-      }}>
-        <input
-          type="file"
-          accept=".glb,.gltf"
-          onChange={handleFileUpload}
-          style={{ marginBottom: '5px' }}
-        />
-        {isLoading && <div>Загрузка...</div>}
-        {modelUrl && (
-          <div style={{ fontSize: '12px', color: '#666' }}>
-            Загружена пользовательская модель
-          </div>
-        )}
-      </div>
+      {/*<div style={{*/}
+      {/*  position: 'absolute',*/}
+      {/*  top: '10px',*/}
+      {/*  left: '10px',*/}
+      {/*  zIndex: 10,*/}
+      {/*  background: 'rgba(255, 255, 255, 0.9)',*/}
+      {/*  padding: '10px',*/}
+      {/*  borderRadius: '5px',*/}
+      {/*  boxShadow: '0 2px 10px rgba(0,0,0,0.1)'*/}
+      {/*}}>*/}
+      {/*  <input*/}
+      {/*    type="file"*/}
+      {/*    accept=".glb,.gltf"*/}
+      {/*    onChange={handleFileUpload}*/}
+      {/*    style={{ marginBottom: '5px' }}*/}
+      {/*  />*/}
+      {/*  {isLoading && <div>Загрузка...</div>}*/}
+      {/*  {modelUrl && (*/}
+      {/*    <div style={{ fontSize: '12px', color: '#666' }}>*/}
+      {/*      Загружена пользовательская модель*/}
+      {/*    </div>*/}
+      {/*  )}*/}
+      {/*</div>*/}
 
       <Canvas shadows camera={{ position: [15, 10, 40], fov: 45 }}>
-        <color attach="background" args={['#f0f0f0']} />
+        {/*<color attach="background" args={['#f0f0f0']} />*/}
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
         <Ring
           modelUrl={modelUrl}
