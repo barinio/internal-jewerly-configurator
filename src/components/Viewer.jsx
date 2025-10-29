@@ -25,18 +25,19 @@ import {folder, Leva, useControls} from 'leva'
 // import hdrUrl from '../assets/images/studio_small_03_1k.hdr'
 // console.log(hdrUrl)
 
-import glbUrl from '/models/ring_ver3_3gem_1.glb?url'
+// import glbUrl from '/models/ring_ver3_3gem_1.glb?url'
+import glbUrl from '/models/ring_ver3_ing.glb?url'
 import {HDRLoader} from "three/examples/jsm/loaders/HDRLoader.js";
 import {Bloom, EffectComposer, EffectComposerContext, N8AO, ToneMapping} from "@react-three/postprocessing";
 // import {MotionBlurEffect, SSGIEffect, TRAAEffect, VelocityDepthNormalPass} from "realism-effects";
 
-const gemMatConf_ = {
-  color: 0xffffff,
-  side: THREE.DoubleSide,
-  envMap: null,
-  aberrationStrength: 0.02,
-  toneMapped: false,
-}
+// const gemMatConf_ = {
+//   color: 0xffffff,
+//   side: THREE.DoubleSide,
+//   envMap: null,
+//   aberrationStrength: 0.02,
+//   toneMapped: false,
+// }
 
 // const goldMaterial = new THREE.MeshPhysicalMaterial({
 //   // Точный цвет настоящего золота (желтый с теплым оттенком)
@@ -70,7 +71,7 @@ const gemMatConf_ = {
 // });
 
 function Ring({ modelUrl, hdrUrl, ...props }) {
-  const refColor = useRef()
+  // const refColor = useRef()
   const { nodes } = useGLTF(modelUrl || glbUrl)
   // Use a custom envmap/scene-backdrop for the diamond material
   // This way we can have a clear BG while cube-cam can still film other objects
@@ -79,7 +80,7 @@ function Ring({ modelUrl, hdrUrl, ...props }) {
   // env.mapping = THREE.EquirectangularReflectionMapping
   // Optional config
   const gemMatConf = useControls('Gem', {
-    color:  'white',
+    color: 'white',
     bounces: { value: 3, min: 0, max: 8, step: 1 },
     aberrationStrength: { value: 0.01, min: 0.0001, max: 0.5, step: 0.001 },
     ior: { value: 2.75, min: 0, max: 10 },
@@ -89,7 +90,7 @@ function Ring({ modelUrl, hdrUrl, ...props }) {
   const goldMatConf = useControls('Gold', {
     // color: props.modelColor,
     // color: '#fffff4',
-    color: props.modelColor || 'red',
+    color: '#eeedee',
     roughness: { value: 0.15, min: 0, max: 1 },
     metalness: { value: 1, min: 0, max: 1 },
     envMapIntensity: { value: 1.5, min: 0, max: 5 },
@@ -318,7 +319,6 @@ export default function Viewer({environmentSettings, stoneSelected, withDiamond 
   const modelColor = Object.values(environmentSettings)[0]?.materialColor
 
 
-
   const handleFileUpload = useCallback((event) => {
     const file = event.target.files[0]
     if (!file) return
@@ -377,7 +377,7 @@ export default function Viewer({environmentSettings, stoneSelected, withDiamond 
       {/*</div>*/}
       <Leva hidden={true} />
       <Canvas shadows camera={{ position: [15, 10, 40], fov: 45 }}>
-        {/*<color attach="background" args={['#f0f0f0']} />*/}
+        <color attach="background" args={['#f0f0f0']} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
         <Ring
           modelUrl={modelUrl}

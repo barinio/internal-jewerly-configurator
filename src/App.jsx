@@ -21,7 +21,6 @@ function App() {
     });
 
     // console.log("environmentSettings", Object.keys(environmentSettings)[0])
-    // console.log("environmentSettings", Object.values(environmentSettings)[0].materialName)
 
     useEffect(() => {
         let basePrice = 489;

@@ -39,7 +39,6 @@ const ProductInfo = ({environmentSettings, setEnvironmentSettings, matSelected, 
                 <ul>
                     {environments.map(environment => (
                         <li key={environment.name}>
-                            <p>{environment.name}</p>
                             <ul className="materialSelectionBlock">
                                 {materials.map((mat) => (
                                     <li
